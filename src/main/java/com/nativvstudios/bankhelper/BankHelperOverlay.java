@@ -58,7 +58,7 @@ class BankHelperOverlay extends WidgetItemOverlay
 
 		ItemComposition composition = itemManager.getItemComposition(canonicalId);
 		boolean untradeable = !composition.isTradeable();
-		int price = 0;
+		long price = 0;
 
 		Color color;
 		if (untradeable)
@@ -67,7 +67,7 @@ class BankHelperOverlay extends WidgetItemOverlay
 		}
 		else
 		{
-			int gePrice = itemManager.getItemPrice(canonicalId);
+			long gePrice = itemManager.getItemPrice(canonicalId);
 			int haPrice = composition.getHaPrice();
 			price = Math.max(gePrice, haPrice);
 			double score = computeScore(price);
@@ -120,7 +120,7 @@ class BankHelperOverlay extends WidgetItemOverlay
 		}
 	}
 
-	private double computeScore(int price)
+	private double computeScore(long price)
 	{
 		long low = parsePrice(config.lowPriceThreshold());
 		long mid = parsePrice(config.midPriceThreshold());
